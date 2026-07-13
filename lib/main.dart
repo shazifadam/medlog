@@ -1,12 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'core/app_services.dart';
+import 'features/home/home_screen.dart';
 import 'firebase_options.dart';
 import 'theme/tokens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initServices();
   runApp(const MedLogApp());
 }
 
@@ -18,7 +21,7 @@ class MedLogApp extends StatelessWidget {
     return const CupertinoApp(
       title: 'MedLog',
       theme: CupertinoThemeData(primaryColor: AppColors.primary),
-      home: HomePlaceholder(),
+      home: HomeScreen(),
     );
   }
 }
